@@ -34,26 +34,26 @@ namespace TFCloud_Blazor_ApiSample.Controllers
             return BadRequest("t'as du merder");
         }
 
-        [HttpPut("Update")]
-        public IActionResult Update([FromBody] GameForm GameForm, int Id)
+        [HttpPut("Update/{id}")]
+        public IActionResult Update([FromBody] GameForm GameForm, int id)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            if (GameRepo.Update(Id,GameForm.Title, GameForm.ReleaseYear, GameForm.Synopsis))
+            if (GameRepo.Update(id,GameForm.Title, GameForm.ReleaseYear, GameForm.Synopsis))
             {
                 return Ok("Mise à jour réussie");
             }
             return BadRequest("t'as du merder");
         }
 
-        [HttpDelete("Delete")]
-        public IActionResult Delete(int Id)
+        [HttpDelete("Delete/{id}")]
+        public IActionResult Delete(int id)
         {
-            if (Id <= 0)
+            if (id <= 0)
             {
                 return BadRequest("ID invalide.");
             }
-            bool deleteSuccess = GameRepo.Delete(Id);
+            bool deleteSuccess = GameRepo.Delete(id);
             if (deleteSuccess)
             {
                 return Ok("Suppression réussie");
