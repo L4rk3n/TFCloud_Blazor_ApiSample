@@ -1,0 +1,48 @@
+﻿@page "/add-game"
+@using TFCloud_Blazor_ApiSample.Models.DTOs
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<PageTitle>Add Game</PageTitle>
+
+<h3>Add a New Game</h3>
+
+<EditForm Model="newGame" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <InputText id="Title" class="form-control" @bind-Value="newGame.Title" />
+    </div>
+
+    <div class="form-group">
+        <label for="ReleaseYear">Release Year</label>
+        <InputNumber id="ReleaseYear" class="form-control" @bind-Value="newGame.ReleaseYear" />
+    </div>
+
+    <div class="form-group">
+        <label for="Synopsis">Synopsis</label>
+        <InputTextArea id="Synopsis" class="form-control" @bind-Value="newGame.Synopsis" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Game</button>
+</EditForm>
+
+@code {
+    private GameForm newGame = new GameForm();
+
+    private async Task HandleValidSubmit()
+    {
+        var response = await Http.PostAsJsonAsync("api/GameController/AjoutJeux", newGame);
+        if (response.IsSuccessStatusCode)
+        {
+            Navigation.NavigateTo("/games");
+        }
+        else
+        {
+            // Handle error
+            Console.WriteLine("An error occurred while adding the game.");
+        }
+    }
+}

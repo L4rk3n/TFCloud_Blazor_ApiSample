@@ -1,0 +1,44 @@
+﻿@page "/games"
+
+@using TFCloud_Blazor_ApiSample.Models.DTOs
+@inject HttpClient Http
+
+<PageTitle>Games List</PageTitle>
+
+<h3>Game List</h3>
+
+@if (games == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Release Year</th>
+                <th>Synopsis</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var game in games)
+            {
+                <tr>
+                    <td>@game.Title</td>
+                    <td>@game.ReleaseYear</td>
+                    <td>@game.Synopsis</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private GameDto[] games;
+
+    protected override async Task OnInitializedAsync()
+    {
+        games = await Http.GetFromJsonAsync<GameDto[]>("api/GameController/All");
+    }
+}

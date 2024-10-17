@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFCloud_Blazor_ApiSample", "TFCloud_Blazor_ApiSample\TFCloud_Blazor_ApiSample.csproj", "{25BB68BF-33EC-48BB-B5E8-07C443D89516}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TFCloud_Blazor_ApiSample", "TFCloud_Blazor_ApiSample\TFCloud_Blazor_ApiSample.csproj", "{25BB68BF-33EC-48BB-B5E8-07C443D89516}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DBBlazorSample", "DBBlazorSample\DBBlazorSample.sqlproj", "{DF0BEAAD-DE3C-4C16-814A-82036FB9C2EA}"
 EndProject
